@@ -23,6 +23,7 @@ Following CRISP-DM framework to do the analysis.
 - Found the best model to be [Ridge](#Ridge) with alpha=0.1 and degree=2. LinearRegression model also came close. Summarized in this [table](#Summary-table)
 - Summarized findings in [Deployment](#Deployment) section below
 - Added [Future Work](#Future-work)
+- Used MSE as the main cost function to optimize for the analysis
 
 
 ## Details
