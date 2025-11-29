@@ -4,7 +4,7 @@ This READMe has the analysis for the features of a vehicle that drive its price.
 
 Link to the jupyter notebook: [Assignment 11_1 Jupyter notebook](https://github.com/raosalapaka/ml-module11/blob/main/assignment11_1_RS.ipynb)
 
-Link to github: [Github] (https://github.com/raosalapaka/ml-module11)
+Link to github: [Github](https://github.com/raosalapaka/ml-module11)
 
 Link to the repository: [Git repository](https://github.com/raosalapaka/ml-module11.git)
 
