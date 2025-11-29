@@ -15,11 +15,12 @@ Link to the repository: [Git repository](https://github.com/raosalapaka/ml-modul
 
 Following CRISP-DM framework to do the analysis.
 
-- Cleaned data by dropping columns that provided little information
+- Cleaned data by [dropping columns](#Initial-exploration) that provided little information
+- [Filled](#Remark-2) in missing values using most common values using 'model' column.
 - Transformed data using make_column_transformer and using OneHot and Ordinal encoders
-- Searched manually and also did Grid search for optimal polynomial degree
-- Evaluated multiple models: PCA with LinearRegression, LinearRegression with SequentialFeatureSelector, LinearRegression with transformed columns, Ridge regression and LASSO regression
-- Found the best model to be [Ridge](#Ridge) with alpha=0.1 and degree=2. LinearRegression model also came close
+- Searched manually and also did Grid search for optimal polynomial degree for PCA and LinearRegression
+- [Evaluated](#Model-evaluation) multiple models: PCA with LinearRegression, LinearRegression with SequentialFeatureSelector, LinearRegression with transformed columns, Ridge regression and LASSO regression
+- Found the best model to be [Ridge](#Ridge) with alpha=0.1 and degree=2. LinearRegression model also came close. Summarized in this [table](#Summary-table)
 - Summarized findings in [Deployment](#Deployment) section below
 
 
@@ -53,7 +54,7 @@ For 9 of the following columns we plot the counts against values and look for sk
 <img width="1119" height="1093" alt="Screenshot 2025-11-28 at 6 40 47 PM" src="https://github.com/user-attachments/assets/85b50d14-016d-4909-a4b6-4bb181697ae6" />
 
 
-### Remark
+### Remark-1
 At this point, if we blindly drop all rows with NaN values, the data set reduces by a lot (>80%). 
 
 ### Further exploration (conclusion)
@@ -62,7 +63,7 @@ From above it is clear that the following columns do not provide a lot of value:
 
 **'title_status'**: most of the vehicles are in clean state and there is very little variance
 
-### Remark
+### Remark-2
 
 To prevent losing a lot of data due to missing values, looked at the 'model' column and imputed the most common value to the following columns: 'cylinders', 'drive', 'size', 'type', 'fuel'. Used mode() to find the most common value for each of these columns based on 'model'. This is simplistic approach but went with this approach for now
 
@@ -76,7 +77,7 @@ There are a lot of rows that do not have 'condition' value but this could be an 
 
 After our initial exploration and fine-tuning of the business understanding, it is time to construct our final dataset prior to modeling.  Here, we want to make sure to handle any integrity issues and cleaning, the engineering of new features, any transformations that we believe should happen (scaling, logarithms, normalization, etc.), and general preparation for modeling with `sklearn`. 
 
-### Remark
+### Remark-3
 
 - Clean the target 'price' column by dropping all rows which have 0 value as this is invalid
 - Drop 'manufacturer' and 'model' columns to reduce complexity
@@ -148,7 +149,7 @@ With some modeling accomplished, we aim to reflect on what we identify as a high
 
 ### Model evaluation
 
-Summary table:
+### Summary table
 
 | Model      | Parameters | Results (MSE) |
 | ----------- | ----------- | --------------------|
