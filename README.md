@@ -3,8 +3,11 @@
 This READMe has the analysis for the features of a vehicle that drive its price. The approach was to follow CRISP-DM framework to find the best model to predict the target price and then use this model to find the features that have the most impact on the target price which can be communicated to the clients who are used cars salespersons. vehicles.csv dataset from Kaggle was used for this analysis. The Jupyter notebook assignment11_1_RS.ipynb has the code for this analysis
 
 Link to the jupyter notebook: [Assignment 11_1 Jupyter notebook](https://github.com/raosalapaka/ml-module11/blob/main/assignment11_1_RS.ipynb)
+
 Link to github: [Github] (https://github.com/raosalapaka/ml-module11)
+
 Link to the repository: [Git repository](https://github.com/raosalapaka/ml-module11.git)
+
 
 # Analysis
 
