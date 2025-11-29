@@ -62,7 +62,7 @@ There are a lot of rows that do not have 'condition' value but this could be an 
 
 After our initial exploration and fine-tuning of the business understanding, it is time to construct our final dataset prior to modeling.  Here, we want to make sure to handle any integrity issues and cleaning, the engineering of new features, any transformations that we believe should happen (scaling, logarithms, normalization, etc.), and general preparation for modeling with `sklearn`. 
 
-###Remark
+### Remark
 
 - Clean the target 'price' column by dropping all rows which have 0 value as this is invalid
 - Drop 'manufacturer' and 'model' columns to reduce complexity
@@ -111,6 +111,7 @@ Following modes were analyzed:
 4. Ridge
     - use grid search to find optimal hyperparameter alpha (with polynomial degree fixed to 2) and 5 cross validation folds.
       - best model found at ridge__alpha=0.1 and poly__degree=2
+        
    plot for target price and model prediction for this model:
 
     <img width="591" height="449" alt="image" src="https://github.com/user-attachments/assets/7e73fa43-11be-4195-a79b-50b81ef63f26" />
