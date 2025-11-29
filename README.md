@@ -11,6 +11,20 @@ Link to the repository: [Git repository](https://github.com/raosalapaka/ml-modul
 ---
 # **Features driving price of a vehicle**
 
+## **Summary**
+
+Following CRISP-DM framework to do the analysis.
+
+- Cleaned data by dropping columns that provided little information
+- Transformed data using make_column_transformer and using OneHot and Ordinal encoders
+- Searched manually and also did Grid search for optimal polynomial degree
+- Evaluated multiple models: PCA with LinearRegression, LinearRegression with SequentialFeatureSelector, LinearRegression with transformed columns, Ridge regression and LASSO regression
+- Found the best model to be [Ridge](#Ridge) with alpha=0.1 and degree=2. LinearRegression model also came close
+- Summarized findings in [Deployment](#Deployment) section below
+
+
+## Details
+
 ## Data Exploration
 
 ### Initial exploration 
@@ -82,7 +96,7 @@ After our initial exploration and fine-tuning of the business understanding, it 
 
 Following modes were analyzed:
 
-1. Model with PCA to form baseline MSE
+1. ### Model with PCA to form baseline MSE
     - manually find the ideal number of components by looking at singular values plot and find the 'elbow' (found at 3)
 
    <img width="591" height="449" alt="Screenshot 2025-11-28 at 6 41 56 PM" src="https://github.com/user-attachments/assets/53bdb1f9-80ba-4a4a-a876-2edfc076dac7" />
@@ -91,7 +105,7 @@ Following modes were analyzed:
 
    <img width="591" height="449" alt="Screenshot 2025-11-28 at 6 42 47 PM" src="https://github.com/user-attachments/assets/36bf821d-bc1b-4170-92d2-c3d7843b7ccf" />
     
-2. LinearRegression
+2. ### LinearRegression
    
     - with all columns. Manually did a search to see which polynomial degree would yield best results (found at 2)
       
@@ -108,7 +122,7 @@ Following modes were analyzed:
     <img width="591" height="449" alt="image" src="https://github.com/user-attachments/assets/e52eb4bc-ce3e-4a1a-b6b1-b384e75adc9a" />
 
     
-4. Ridge
+3. ### Ridge
     - use grid search to find optimal hyperparameter alpha (with polynomial degree fixed to 2) and 5 cross validation folds.
       - best model found at ridge__alpha=0.1 and poly__degree=2
         
@@ -119,7 +133,7 @@ Following modes were analyzed:
     - use grid search to find optimal hyperparameters alpha for Ridge and degree for polynomial with 5 cross validation folds
       - confirmed that grid search also found the same model with alpha=0.1 and polynomial degree=2
         
-5. Lasso
+4. ### Lasso
     - use grid search to find optimal alpha with degree=2 and 5 cross validation folds. Found LASSO alpha at 1e-5 with degree=2
    plot for target price and model prediction with LASSO
 
