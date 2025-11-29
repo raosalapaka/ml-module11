@@ -38,6 +38,7 @@ For 9 of the following columns we plot the counts against values and look for sk
 
 ![alt text](image.png)
 
+
 ### Remark
 At this point, if we blindly drop all rows with NaN values, the data set reduces by a lot (>80%). 
 
@@ -49,9 +50,9 @@ From above it is clear that the following columns do not provide a lot of value:
 
 ###Remark
 
-To prevent losing a lot of data due to missing data, looked at the 'model' column and imputed the most common value to the following columns: 'cylinders', 'drive', 'size', 'type', 'fuel'. Used mode() to find the most common value for each of these columns based on 'model'. This is simplistic approach but went this for now
+To prevent losing a lot of data due to missing values, looked at the 'model' column and imputed the most common value to the following columns: 'cylinders', 'drive', 'size', 'type', 'fuel'. Used mode() to find the most common value for each of these columns based on 'model'. This is simplistic approach but went with this approach for now
 
-**This is simplistic. Explore if we can fix the data by distributing the values in the same proportion as their ratios**
+<img width="1119" height="1093" alt="Screenshot 2025-11-28 at 6 40 47 PM" src="https://github.com/user-attachments/assets/85b50d14-016d-4909-a4b6-4bb181697ae6" />
 
 ### Final remark on data exploration
 There are a lot of rows that do not have 'condition' value but this could be an important column as the condition of the car should be an important feature to predict car price. As a result kept this column even if it reduces the samples by a lot (almost 43%)
@@ -82,15 +83,47 @@ After our initial exploration and fine-tuning of the business understanding, it 
 Following modes were analyzed:
 
 1. Model with PCA to form baseline MSE
-    - manually find the ideal number of components by looking at singular values plot and find the 'elbow'
-2. LinearRegression 
-    - with all columns. Manually did a search to see which polynomial degree would yield best results. 
+    - manually find the ideal number of components by looking at singular values plot and find the 'elbow' (found at 3)
+
+   <img width="591" height="449" alt="Screenshot 2025-11-28 at 6 41 56 PM" src="https://github.com/user-attachments/assets/53bdb1f9-80ba-4a4a-a876-2edfc076dac7" />
+   
+    - manually iterated to find optimal polynomial degree (elbow at 4)
+
+   <img width="591" height="449" alt="Screenshot 2025-11-28 at 6 42 47 PM" src="https://github.com/user-attachments/assets/36bf821d-bc1b-4170-92d2-c3d7843b7ccf" />
+    
+2. LinearRegression
+   
+    - with all columns. Manually did a search to see which polynomial degree would yield best results (found at 2)
+      
+   <img width="591" height="449" alt="Screenshot 2025-11-28 at 6 45 39 PM" src="https://github.com/user-attachments/assets/b3c3d931-90a2-4606-a0d5-c738c0559b57" />
+
+   plot for target price and model prediction for this model:
+
+   <img width="591" height="449" alt="image" src="https://github.com/user-attachments/assets/6535ae2e-c2a8-4c30-b112-9cec04a4a586" />
+
     - use SequentialFeatureSelector to select 6 columns
+ 
+    plot for target price and model prediction for this LinearRegression model:
+
+    <img width="591" height="449" alt="image" src="https://github.com/user-attachments/assets/e52eb4bc-ce3e-4a1a-b6b1-b384e75adc9a" />
+
+    
 4. Ridge
-    - use grid search to find optimal hyperparameter alpha (with polynomial degree fixed to 2) and 5 cross validation folds
+    - use grid search to find optimal hyperparameter alpha (with polynomial degree fixed to 2) and 5 cross validation folds.
+      - best model found at ridge__alpha=0.1 and poly__degree=2
+   plot for target price and model prediction for this model:
+
+    <img width="591" height="449" alt="image" src="https://github.com/user-attachments/assets/7e73fa43-11be-4195-a79b-50b81ef63f26" />
+
     - use grid search to find optimal hyperparameters alpha for Ridge and degree for polynomial with 5 cross validation folds
+      - confirmed that grid search also found the same model with alpha=0.1 and polynomial degree=2
+        
 5. Lasso
-    - use grid search to find optimal alpha with degree=2 and 5 cross validation folds
+    - use grid search to find optimal alpha with degree=2 and 5 cross validation folds. Found LASSO alpha at 1e-5 with degree=2
+   plot for target price and model prediction with LASSO
+
+    <img width="591" height="449" alt="image" src="https://github.com/user-attachments/assets/d4b420f6-3d45-4e45-987b-892b30cfbbe3" />
+
 
 Used StandardScaler with Pipeline for all of the analysis above
 
@@ -136,7 +169,6 @@ Best model in the analysis is the Ridge model, with alpha=0.1 and degree=2. We w
 Now that we've settled on our models and findings, it is time to deliver the information to the client.  You should organize your work as a basic report that details your primary findings.  Keep in mind that your audience is a group of used car dealers interested in fine-tuning their inventory.
 
 **Findings/Recommendations**
-
 
 **Summary**
 
@@ -252,3 +284,4 @@ After evaluating multiple models, the following features of the car were found t
 - analyze the columns more and see if we can make use of them. For example manufacturer brand may have a bigger impact on car price
 - Analyze different transformations of data - maybe there is some structure in the column values that can be utilized.
 - Do a larger grid search to find optimal parameters for alpha and polynomial degree. This becomes quite computationally intensive so had to restrict the search to smaller space
+- Explore a better mechanism than imputing most common value for columns missing data. One idea is to impute the values based on their ratios to keep the same mean value of counts
