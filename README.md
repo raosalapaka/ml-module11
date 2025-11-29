@@ -36,7 +36,7 @@ Analyzing other columns. Looking at the spread of the columns among its differen
 
 For 9 of the following columns we plot the counts against values and look for skews and outliers
 
-![alt text](image.png)
+<img width="1119" height="1093" alt="Screenshot 2025-11-28 at 6 40 47 PM" src="https://github.com/user-attachments/assets/85b50d14-016d-4909-a4b6-4bb181697ae6" />
 
 
 ### Remark
@@ -52,7 +52,7 @@ From above it is clear that the following columns do not provide a lot of value:
 
 To prevent losing a lot of data due to missing values, looked at the 'model' column and imputed the most common value to the following columns: 'cylinders', 'drive', 'size', 'type', 'fuel'. Used mode() to find the most common value for each of these columns based on 'model'. This is simplistic approach but went with this approach for now
 
-<img width="1119" height="1093" alt="Screenshot 2025-11-28 at 6 40 47 PM" src="https://github.com/user-attachments/assets/85b50d14-016d-4909-a4b6-4bb181697ae6" />
+
 
 ### Final remark on data exploration
 There are a lot of rows that do not have 'condition' value but this could be an important column as the condition of the car should be an important feature to predict car price. As a result kept this column even if it reduces the samples by a lot (almost 43%)
