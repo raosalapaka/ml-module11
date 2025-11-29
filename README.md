@@ -48,7 +48,7 @@ From above it is clear that the following columns do not provide a lot of value:
 
 **'title_status'**: most of the vehicles are in clean state and there is very little variance
 
-###Remark
+### Remark
 
 To prevent losing a lot of data due to missing values, looked at the 'model' column and imputed the most common value to the following columns: 'cylinders', 'drive', 'size', 'type', 'fuel'. Used mode() to find the most common value for each of these columns based on 'model'. This is simplistic approach but went with this approach for now
 
