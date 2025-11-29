@@ -8,13 +8,8 @@ Link to github: [Github] (https://github.com/raosalapaka/ml-module11)
 
 Link to the repository: [Git repository](https://github.com/raosalapaka/ml-module11.git)
 
-
-# Analysis
-
 ---
 # **Features driving price of a vehicle**
-
-## **CRISP-DM**
 
 ## Data Exploration
 
